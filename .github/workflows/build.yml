@@ -21,10 +21,12 @@ jobs:
           yarn --frozen-lockfile
           yarn build
           yarn test
+          mkdir cov
           yarn e2e
         env:
           CI: true
-#     - uses: codecov/codecov-action@v1
-#       with:
-#         token: ${{ secrets.CODECOV_TOKEN }}
-#         file: ./coverage/lcov.info
+          NODE_V8_COVERAGE: cov
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/lcov.info

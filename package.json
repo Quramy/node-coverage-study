@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --coverage",
-    "e2e": "NODE_V8_COVERAGE node lib/main.js"
+    "e2e": "node lib/main.js"
   },
   "keywords": [],
   "author": "",
