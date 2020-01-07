@@ -16,20 +16,31 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build, and test
+      - name: npm install
         run: |
           yarn --frozen-lockfile
           yarn build
-          yarn test
-          rm -rf cov
-          mkdir -p cov
-          yarn e2e
         env:
           CI: true
-          NODE_V8_COVERAGE: cov
+      - name: jest
+        run: |
+          yarn test
+        env:
+          CI: true
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
           file: ./coverage/lcov.info
           name: jest
+      - name: e2e
+        run: |
+          yarn e2e
+        env:
+          CI: true
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests 
+          file: ./cov/coverage.json
+          name: node
