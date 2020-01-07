@@ -42,5 +42,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
-          file: ./cov/coverage.json
+          file: coverage.json
           name: node

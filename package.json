@@ -12,10 +12,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@c88/v8-coverage": "^0.1.1",
     "@types/jest": "^24.0.25",
+    "glob": "^7.1.6",
     "jest": "^24.9.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "v8-to-istanbul": "^4.0.1"
   },
   "jest": {
     "globals": {
@@ -40,5 +43,8 @@
       "ts",
       "json"
     ]
+  },
+  "dependencies": {
+    "minimatch": "^3.0.4"
   }
 }

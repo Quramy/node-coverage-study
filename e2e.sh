@@ -3,9 +3,6 @@
 rm -rf cov
 mkdir -p cov
 export NODE_V8_COVERAGE=cov
-node lib/main.js
+node e2e/e2e.js > /dev/null
 export NODE_V8_COVERAGE=
-for file in $(ls cov); do
-  echo ${file}
-  mv cov/${file} cov/coverage.json
-done
+node tools/correct-coverages.js cov "lib/**/*.js" > coverage.json

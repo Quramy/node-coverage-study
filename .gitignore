@@ -113,3 +113,4 @@ temp/
 cov/
 coverage/
 lib/
+coverage.json
