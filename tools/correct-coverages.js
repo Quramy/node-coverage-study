@@ -46,18 +46,18 @@ function convert(file, minimatchCondition) {
   }
 }
 
-function main(v8CovrageDirectory, minimatchCondition = '**/*') {
+function main(v8CoverageDirectory, minimatchCondition = '**/*') {
   const files = glob.sync('**/*.json', {
-    cwd: v8CovrageDirectory,
+    cwd: v8CoverageDirectory,
   });
-  const correctedProcessCovs = files.map(f => convert(path.resolve(v8CovrageDirectory, f), minimatchCondition)).filter(f => !!f)
+  const correctedProcessCovs = files.map(f => convert(path.resolve(v8CoverageDirectory, f), minimatchCondition)).filter(f => !!f)
   const mergedResult = mergeProcessCovs(correctedProcessCovs).result;
   const mergedSourceMapCache = correctedProcessCovs.reduce((acc, processCov) => Object.assign({}, acc, processCov['source-map-cache']), { });
   const mergedCoverage = { result: mergedResult, ['source-map-cache']: mergedSourceMapCache };
   console.log(JSON.stringify(mergedCoverage, null, 2));
 }
 
-const v8CovrageDirectory = path.resolve(process.cwd(), process.argv.slice(2)[0]);
+const v8CoverageDirectory = path.resolve(process.cwd(), process.argv.slice(2)[0]);
 const minimatchCondition = process.argv.slice(2)[1];
 
-main(v8CovrageDirectory, minimatchCondition);
+main(v8CoverageDirectory, minimatchCondition);
