@@ -21,7 +21,8 @@ jobs:
           yarn --frozen-lockfile
           yarn build
           yarn test
-          mkdir cov
+          rm -rf cov
+          mkdir -p cov
           yarn e2e
         env:
           CI: true
