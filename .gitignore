@@ -114,3 +114,4 @@ cov/
 coverage/
 lib/
 coverage.json
+e2e_coverage/
