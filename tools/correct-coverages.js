@@ -53,7 +53,8 @@ function main(v8CoverageDirectory, minimatchCondition = '**/*') {
   const correctedProcessCovs = files.map(f => convert(path.resolve(v8CoverageDirectory, f), minimatchCondition)).filter(f => !!f)
   const mergedResult = mergeProcessCovs(correctedProcessCovs).result;
   const mergedSourceMapCache = correctedProcessCovs.reduce((acc, processCov) => Object.assign({}, acc, processCov['source-map-cache']), { });
-  const mergedCoverage = { result: mergedResult, ['source-map-cache']: mergedSourceMapCache };
+  // const mergedCoverage = { result: mergedResult, ['source-map-cache']: mergedSourceMapCache };
+  const mergedCoverage = { result: mergedResult };
   console.log(JSON.stringify(mergedCoverage, null, 2));
 }
 
