@@ -27,12 +27,12 @@ jobs:
           yarn test
         env:
           CI: true
-#     - uses: codecov/codecov-action@v1
-#       with:
-#         token: ${{ secrets.CODECOV_TOKEN }}
-#         flags: unittests 
-#         file: ./coverage/lcov.info
-#         name: jest
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests 
+          file: ./coverage/lcov.info
+          name: jest
       - name: e2e
         run: |
           yarn e2e
