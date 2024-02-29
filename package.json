@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --coverage",
-    "e2e": "c8 -o e2e_coverage -r lcovonly node e2e/e2e.test.js"
+    "e2e": "c8 -o e2e_coverage -r lcov -r cobertura node e2e/e2e.test.js"
   },
   "keywords": [],
   "author": "",
