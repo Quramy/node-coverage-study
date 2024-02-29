@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -16,18 +16,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: npm
       - name: npm install
         run: |
-          yarn --frozen-lockfile
-          yarn build
+          npm ci
+          npm run build
         env:
           CI: true
       - name: jest
         run: |
-          yarn test
+          npm test
         env:
           CI: true
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
@@ -35,10 +36,10 @@ jobs:
           name: jest
       - name: e2e
         run: |
-          yarn e2e
+          npm run e2e
         env:
           CI: true
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
