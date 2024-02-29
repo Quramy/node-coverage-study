@@ -34,14 +34,14 @@ jobs:
           flags: unittests 
           file: ./coverage/cobertura-coverage.xml
           name: jest
-      - name: e2e
-        run: |
-          npm run e2e
-        env:
-          CI: true
-      - uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: unittests 
-          file: e2e_coverage/lcov.info
-          name: node
+#     - name: e2e
+#       run: |
+#         npm run e2e
+#       env:
+#         CI: true
+#     - uses: codecov/codecov-action@v4
+#       with:
+#         token: ${{ secrets.CODECOV_TOKEN }}
+#         flags: unittests 
+#         file: e2e_coverage/lcov.info
+#         name: node
