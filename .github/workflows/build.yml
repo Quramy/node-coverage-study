@@ -32,7 +32,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
-          file: ./coverage/lcov.info
+          file: ./coverage/cobertura-coverage.xml
           name: jest
       - name: e2e
         run: |
@@ -43,5 +43,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests 
-          file: e2e_coverage/lcov.info
+          file: e2e_coverage/cobertura-coverage.xml
           name: node
